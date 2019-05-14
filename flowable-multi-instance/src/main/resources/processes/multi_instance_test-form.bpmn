@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="MultiInstanceTestForm" name="Multi Instance Test Form" isExecutable="true">
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <serviceTask id="setArrayListServiceTask" name="Set Array List Service Task" activiti:class="com.zaizi.delegate.ItemListDelegate"></serviceTask>
+    <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="setArrayListServiceTask"></sequenceFlow>
+    <subProcess id="subprocess1" name="Sub Process">
+      <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="itemList" activiti:elementVariable="item"></multiInstanceLoopCharacteristics>
+      <startEvent id="startevent2" name="Start"></startEvent>
+      <endEvent id="endevent1" name="End"></endEvent>
+      <userTask id="showItemValueUserTask" name="Show Item Value User Task" activiti:candidateGroups="staff" activiti:formKey="multiInstaceUTForm"></userTask>
+      <sequenceFlow id="flow6" sourceRef="startevent2" targetRef="showItemValueUserTask"></sequenceFlow>
+      <sequenceFlow id="flow7" sourceRef="showItemValueUserTask" targetRef="endevent1"></sequenceFlow>
+    </subProcess>
+    <sequenceFlow id="flow2" sourceRef="setArrayListServiceTask" targetRef="subprocess1"></sequenceFlow>
+    <endEvent id="endevent2" name="End"></endEvent>
+    <sequenceFlow id="flow5" sourceRef="subprocess1" targetRef="endevent2"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_MultiInstanceTestForm">
+    <bpmndi:BPMNPlane bpmnElement="MultiInstanceTestForm" id="BPMNPlane_MultiInstanceTestForm">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="90.0" y="210.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="setArrayListServiceTask" id="BPMNShape_setArrayListServiceTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="200.0" y="200.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="subprocess1" id="BPMNShape_subprocess1">
+        <omgdc:Bounds height="194.0" width="351.0" x="420.0" y="131.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="startevent2" id="BPMNShape_startevent2">
+        <omgdc:Bounds height="35.0" width="35.0" x="440.0" y="210.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="710.0" y="210.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="showItemValueUserTask" id="BPMNShape_showItemValueUserTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="520.0" y="200.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent2" id="BPMNShape_endevent2">
+        <omgdc:Bounds height="35.0" width="35.0" x="860.0" y="210.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="125.0" y="227.0"></omgdi:waypoint>
+        <omgdi:waypoint x="200.0" y="227.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="475.0" y="227.0"></omgdi:waypoint>
+        <omgdi:waypoint x="520.0" y="227.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="625.0" y="227.0"></omgdi:waypoint>
+        <omgdi:waypoint x="710.0" y="227.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="305.0" y="227.0"></omgdi:waypoint>
+        <omgdi:waypoint x="420.0" y="228.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="771.0" y="228.0"></omgdi:waypoint>
+        <omgdi:waypoint x="860.0" y="227.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

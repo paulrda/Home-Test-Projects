@@ -1,0 +1,20 @@
+{
+    "name": "Multi Instance User Task Form",
+    "key": "multiInstaceUTForm",
+    "description": "",
+    "fields": [
+        {
+            "fieldType": "FormField",
+            "id": "item",
+            "name": "Item Value",
+            "type": "text",
+            "value": null,
+            "required": false,
+            "readOnly": false,
+            "overrideId": true,
+            "placeholder": null,
+            "layout": null
+        }
+    ],
+    "outcomes": []
+}
